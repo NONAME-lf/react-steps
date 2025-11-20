@@ -1,47 +1,29 @@
 import "./style.scss";
 import { type StepsProps } from "../Steps/Steps";
 import { useEffect, useRef } from "react";
+import { GOAL_STEPS } from "../../constants";
+import { togglePercentageOverflow } from "../../utils";
 
-export default function Bar(stepsProps: StepsProps) {
+export default function Bar({ stepData = [] }: StepsProps) {
   const fillBarRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
   const percentageRef = useRef<HTMLSpanElement>(null);
 
-  const { stepData = [] } = stepsProps;
-
   const totalSteps = stepData.reduce((acc, data) => acc + data.steps, 0);
-  const percentage = Math.min((totalSteps / 8000) * 100, 100);
-
-  window.addEventListener("resize", () => {
-    const fillBarWidth = fillBarRef?.current
-      ? fillBarRef?.current.offsetWidth
-      : 0;
-    const barWidth = barRef?.current ? barRef.current.offsetWidth : 0;
-    const percWidth = percentageRef?.current
-      ? percentageRef.current.offsetWidth
-      : 0;
-
-    if (barWidth - fillBarWidth < percWidth + 40) {
-      percentageRef?.current?.classList.add("overflow");
-    } else {
-      percentageRef?.current?.classList.remove("overflow");
-    }
-  });
+  const percentage = Math.min((totalSteps / GOAL_STEPS) * 100, 100);
 
   useEffect(() => {
-    const fillBarWidth = fillBarRef?.current
-      ? fillBarRef?.current.offsetWidth
-      : 0;
-    const barWidth = barRef?.current ? barRef.current.offsetWidth : 0;
-    const percWidth = percentageRef?.current
-      ? percentageRef.current.offsetWidth
-      : 0;
+    togglePercentageOverflow(barRef, fillBarRef, percentageRef);
 
-    if (barWidth - fillBarWidth < percWidth + 40) {
-      percentageRef?.current?.classList.add("overflow");
-    } else {
-      percentageRef?.current?.classList.remove("overflow");
-    }
+    window.addEventListener("resize", () => {
+      togglePercentageOverflow(barRef, fillBarRef, percentageRef);
+    });
+
+    return () => {
+      window.removeEventListener("resize", () => {
+        togglePercentageOverflow(barRef, fillBarRef, percentageRef);
+      });
+    };
   }, [percentage]);
 
   return (

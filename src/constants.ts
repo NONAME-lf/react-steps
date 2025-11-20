@@ -1,8 +1,7 @@
-import type {
-  StepData
-} from "./components/Steps/Steps";
+import type { StepData } from "./components/Steps/Steps";
 
-export const STEP_DATA: StepData[] = [{
+export const STEP_DATA: StepData[] = [
+  {
     startTime: "2024-11-03T08:00:00.000Z",
     endTime: "2024-11-03T09:00:00.000Z",
     steps: 100,
@@ -30,7 +29,7 @@ export const STEP_DATA: StepData[] = [{
   {
     startTime: "2024-11-03T13:00:00.000Z",
     endTime: "2024-11-03T14:00:00.000Z",
-    steps: 5000,
+    steps: 4500,
   },
 ];
 
