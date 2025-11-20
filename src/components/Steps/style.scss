@@ -1,0 +1,32 @@
+.steps-component {
+    height: max-content;
+    width: min(90%, 520px);
+    height: 50dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    max-width: 520px;
+    margin: 0 auto;
+
+    .info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 10px;
+        width: 100%;
+        max-width: 520px;
+        height: 50%;
+    }
+
+    .growth-bar {
+        height: 50%;
+    }
+
+    .all-steps-link {
+        font-size: 0.7rem;
+        color: #a3a3a3;
+        align-self: flex-end;
+    }
+}

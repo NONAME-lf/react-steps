@@ -1,0 +1,56 @@
+.steps-graph {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    gap: 5px;
+    max-height: 100px;
+
+    li.graph-bar {
+        list-style-type: none;
+    }
+
+    .graph-bar {
+        background-color: #13d377;
+        border-radius: 20px;
+        width: 7px;
+        max-height: 100%;
+        position: relative;
+
+        &.no-steps {
+            height: 7px;
+            background-color: #e5e7e3;
+        }
+
+        &.now {
+            &::before {
+                content: '';
+                display: block;
+                border: 2px solid #000;
+                top: -11px;
+                left: -1px;
+                width: 9px;
+                height: 9px;
+                border-radius: 50%;
+                position: absolute;
+            }
+
+            &::after {
+                content: "Now";
+                display: block;
+                top: -32px;
+                left: -12px;
+                color: #000;
+                font-weight: 600;
+                position: absolute;
+                font-size: 0.9rem;
+            }
+        }
+    }
+
+    .bar-fill {
+        display: block;
+    }
+}
