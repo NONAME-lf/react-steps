@@ -7,6 +7,7 @@ import "./style.scss";
 import { useMemo } from "react";
 
 export interface StepData {
+  now?: boolean;
   startTime: string;
   endTime: string;
   steps: number;

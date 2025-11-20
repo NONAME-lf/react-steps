@@ -31,6 +31,16 @@ export const STEP_DATA: StepData[] = [
     endTime: "2024-11-03T14:00:00.000Z",
     steps: 4500,
   },
+  {
+    startTime: "2024-11-04T14:00:00.000Z",
+    endTime: "2024-11-04T15:00:00.000Z",
+    steps: 4500,
+  },
+  {
+    startTime: "2024-11-05T10:00:00.000Z",
+    endTime: "2024-11-05T11:00:00.000Z",
+    steps: 4500,
+  },
 ];
 
 // Parse ISO string to Date and extract hours

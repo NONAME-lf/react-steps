@@ -6,10 +6,17 @@
     height: 100%;
     margin: 0;
     gap: 5px;
-    max-height: 100px;
+    overflow-x: scroll;
+    overflow-y: visible;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     li.graph-bar {
         list-style-type: none;
+        max-height: 100px;
+        min-width: 5px;
     }
 
     .graph-bar {
@@ -20,7 +27,7 @@
         position: relative;
 
         &.no-steps {
-            height: 7px;
+            height: 5px;
             background-color: #e5e7e3;
         }
 
