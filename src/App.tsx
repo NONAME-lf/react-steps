@@ -1,14 +1,12 @@
-import { STEP_DATA, MAX_STEPS } from "./constants";
+import { STEP_DATA, GOAL_STEPS } from "./constants.ts";
 import Steps from "./components/Steps/Steps";
 import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const [totalSteps, setTotalSteps] = useState(0);
-
   return (
     <>
-      <Steps stepData={STEP_DATA} maxSteps={MAX_STEPS} />
+      <Steps stepData={STEP_DATA} maxSteps={GOAL_STEPS} />
     </>
   );
 }
