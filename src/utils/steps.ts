@@ -1,5 +1,5 @@
-import { type StepData } from "./components/Steps/Steps.tsx";
-import { MIN_STEP_HOURS } from "./constants.ts";
+import { type StepData } from "../components/Steps/Steps.tsx";
+import { MIN_STEP_HOURS } from "../constants.ts";
 
 export function fillToMinStepsHours(stepData: StepData[]) {
   const minTime = Math.min(
@@ -33,33 +33,5 @@ export function fillToMinStepsHours(stepData: StepData[]) {
       });
     }
     return newStepData;
-  }
-}
-
-export function getMaxProvidedHour(stepData: StepData[]) {
-  return Math.max(
-    ...stepData.map(
-      (data) => data.steps && new Date(data.endTime).getUTCHours()
-    )
-  );
-}
-
-export function togglePercentageOverflow(
-  mainBarRef: React.RefObject<HTMLDivElement | null>,
-  fillBarRef: React.RefObject<HTMLDivElement | null>,
-  percentageRef: React.RefObject<HTMLSpanElement | null>
-) {
-  const fillBarWidth = fillBarRef?.current
-    ? fillBarRef?.current.offsetWidth
-    : 0;
-  const barWidth = mainBarRef?.current ? mainBarRef.current.offsetWidth : 0;
-  const percWidth = percentageRef?.current
-    ? percentageRef.current.offsetWidth
-    : 0;
-
-  if (barWidth - fillBarWidth < percWidth + 40) {
-    percentageRef?.current?.classList.add("overflow");
-  } else {
-    percentageRef?.current?.classList.remove("overflow");
   }
 }

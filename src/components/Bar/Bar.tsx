@@ -2,7 +2,7 @@ import "./style.scss";
 import { type StepsProps } from "../Steps/Steps";
 import { useEffect, useRef } from "react";
 import { GOAL_STEPS } from "../../constants";
-import { togglePercentageOverflow } from "../../utils";
+import { togglePercentageOverflow } from "../../utils/bar";
 
 export default function Bar({ stepData = [] }: StepsProps) {
   const fillBarRef = useRef<HTMLDivElement>(null);

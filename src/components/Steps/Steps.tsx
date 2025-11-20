@@ -2,7 +2,7 @@ import Counter from "../Counter/Counter";
 import { GOAL_STEPS, MIN_STEP_HOURS } from "../../constants.ts";
 import Graph from "../Graph/Graph";
 import Bar from "../Bar/Bar";
-import { fillToMinStepsHours } from "../../utils.ts";
+import { fillToMinStepsHours } from "../../utils";
 import "./style.scss";
 import { useMemo } from "react";
 

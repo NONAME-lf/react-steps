@@ -2,7 +2,7 @@ import "./style.scss";
 import { type StepData, type StepsProps } from "../Steps/Steps";
 import { useRef } from "react";
 import { GOAL_STEPS, MIN_STEP_HOURS } from "../../constants.ts";
-import { getMaxProvidedHour } from "../../utils.ts";
+import { getMaxProvidedHour } from "../../utils";
 
 export default function Graph(stepsProps: StepsProps) {
   const { stepData = [] } = stepsProps;
@@ -23,7 +23,7 @@ export default function Graph(stepsProps: StepsProps) {
             data.steps === 0
               ? {}
               : {
-                  height: `${(data.steps / GOAL_STEPS) * 500}%`,
+                  height: `${(data.steps / GOAL_STEPS) * 250}%`,
                 }
           }
         ></li>
