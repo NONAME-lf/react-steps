@@ -1,9 +1,10 @@
 import { EXAMPLE_OTP } from "../../constants";
 import "./style.scss";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export function Otp() {
   const [value, setValue] = useState<string>("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const clearValue = e.target.value
@@ -13,10 +14,15 @@ export function Otp() {
     setValue(clearValue);
   };
 
+  const handleBlockClick = (index: number) => {
+    inputRef.current?.focus();
+  };
+
   return (
     <div className="otp-component">
       <form>
         <input
+          ref={inputRef}
           className="otp-input"
           name="otp-input"
           id="otp-input"
@@ -31,6 +37,7 @@ export function Otp() {
           {EXAMPLE_OTP.split("").map((_, index) => (
             <li
               key={index}
+              onClick={() => handleBlockClick(index)}
               className={`otp-block ${index === value.length ? "active" : ""} ${
                 value[index] ? "filled" : ""
               }`}
