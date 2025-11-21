@@ -41,7 +41,6 @@ export function Otp() {
           value={value}
           onChange={handleChange}
           onKeyUp={updateCursorPosition}
-          onClick={updateCursorPosition}
           maxLength={EXAMPLE_OTP.length}
           autoComplete="off"
           autoFocus
