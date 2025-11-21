@@ -1,7 +1,5 @@
 import "./style.scss";
-import { DateTime, Duration, Interval } from "luxon";
 import { type StepData, type StepsProps } from "../Steps/Steps";
-import { useRef } from "react";
 import { GOAL_STEPS, MIN_STEP_HOURS } from "../../constants.ts";
 
 export default function Graph(stepsProps: StepsProps) {
