@@ -14,7 +14,7 @@ export function Otp() {
     setValue(clearValue);
   };
 
-  const handleBlockClick = () => {
+  const handleBlockClick = (index: number) => {
     inputRef.current?.focus();
   };
 
@@ -37,7 +37,7 @@ export function Otp() {
           {EXAMPLE_OTP.split("").map((_, index) => (
             <li
               key={index}
-              onClick={() => handleBlockClick()}
+              onClick={() => handleBlockClick(index)}
               className={`otp-block ${index === value.length ? "active" : ""} ${
                 value[index] ? "filled" : ""
               }`}
