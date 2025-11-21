@@ -58,4 +58,4 @@ export const STEP_DATA: StepData[] = [
 
 export const GOAL_STEPS = 8000;
 export const MIN_STEP_HOURS = 12;
-export const EXAMPLE_OTP = "1G2J4K";
+export const EXAMPLE_OTP = "123321";

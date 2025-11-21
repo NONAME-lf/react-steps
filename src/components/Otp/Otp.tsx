@@ -1,6 +1,6 @@
 import { EXAMPLE_OTP } from "../../constants";
 import "./style.scss";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 export function Otp() {
   const [value, setValue] = useState<string>("");
@@ -8,7 +8,6 @@ export function Otp() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Only allow alphanumeric characters and limit to EXAMPLE_OTP length
     const clearValue = e.target.value
-      .replace(/[^a-zA-Z0-9]/g, "")
       .toUpperCase()
       .slice(0, EXAMPLE_OTP.length);
 
@@ -22,7 +21,7 @@ export function Otp() {
           className="otp-input"
           name="otp-input"
           id="otp-input"
-          type="text"
+          type="number"
           value={value}
           onChange={handleChange}
           maxLength={EXAMPLE_OTP.length}
