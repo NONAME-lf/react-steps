@@ -59,3 +59,11 @@ export const STEP_DATA: StepData[] = [
 export const GOAL_STEPS = 8000;
 export const MIN_STEP_HOURS = 12;
 export const EXAMPLE_OTP = "123321";
+
+export const TOOLTIP_TEXT_ENTRIES = [
+  "Test Testsurname",
+  "test testtt",
+  "not consented",
+  "not consented 2",
+  "nothing here",
+];

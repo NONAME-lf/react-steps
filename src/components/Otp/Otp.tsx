@@ -24,7 +24,7 @@ export function Otp() {
   const handleBlockClick = (index: number) => {
     inputRef.current?.focus();
     setTimeout(() => {
-      inputRef.current?.setSelectionRange(index, index);
+      inputRef.current?.setSelectionRange(index + 1, index + 1);
       setCursorPosition(index);
     }, 0);
   };
@@ -32,19 +32,21 @@ export function Otp() {
   return (
     <div className="otp-component">
       <form>
-        <input
-          ref={inputRef}
-          className="otp-input"
-          name="otp-input"
-          id="otp-input"
-          type="text"
-          value={value}
-          onChange={handleChange}
-          onKeyUp={updateCursorPosition}
-          maxLength={EXAMPLE_OTP.length}
-          autoComplete="off"
-          autoFocus
-        />
+        <label htmlFor="otp-input">
+          <input
+            ref={inputRef}
+            className="otp-input"
+            name="otp-input"
+            id="otp-input"
+            type="text"
+            value={value}
+            onChange={handleChange}
+            onKeyUp={updateCursorPosition}
+            maxLength={EXAMPLE_OTP.length}
+            autoComplete="off"
+            autoFocus
+          />
+        </label>
         <ul className="otp-blocks">
           {EXAMPLE_OTP.split("").map((_, index) => (
             <li
