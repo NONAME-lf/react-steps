@@ -1,0 +1,100 @@
+.otp-component {
+    form {
+        position: relative;
+        cursor: text;
+        display: inline-block;
+    }
+
+
+    .otp-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 0;
+        cursor: text;
+        font-size: 24px;
+        border: none;
+        outline: none;
+        background: transparent;
+    }
+
+    .otp-blocks {
+        list-style-type: none;
+        display: flex;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        z-index: 1;
+        user-select: text;
+
+        .otp-block {
+            width: 50px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #000;
+            border-radius: 8px;
+            font-size: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            background-color: #fff;
+            color: #000;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            user-select: text;
+            cursor: text;
+            flex-shrink: 0;
+
+            &::selection {
+                background-color: rgba(19, 211, 118, 0.489);
+            }
+
+            .otp-char {
+                display: block;
+                min-width: 1ch;
+                text-align: center;
+            }
+
+            &.active {
+                border-color: #13d377;
+                box-shadow: 0 0 0 3px rgba(19, 211, 119, 0.2);
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 2px;
+                    height: 30px;
+                    background-color: #000;
+                    animation: blink 1s infinite;
+                }
+            }
+
+            &.filled {
+                border-color: #13d377;
+            }
+
+            &:focus-within {
+                border-color: #13d377;
+                box-shadow: 0 0 0 3px rgba(19, 211, 119, 0.2);
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+    }
+}
