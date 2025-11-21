@@ -4,18 +4,29 @@ import { useState, useRef } from "react";
 
 export function Otp() {
   const [value, setValue] = useState<string>("");
+  const [cursorPosition, setCursorPosition] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const clearedValue = e.target.value
-      .toUpperCase()
+    const clearValue = e.target.value
+      .replace(/[^0-9]/g, "")
       .slice(0, EXAMPLE_OTP.length);
 
-    setValue(clearedValue);
+    setValue(clearValue);
   };
 
-  const handleBlockClick = () => {
+  const updateCursorPosition = () => {
+    if (inputRef.current) {
+      setCursorPosition(inputRef.current.selectionStart || 0);
+    }
+  };
+
+  const handleBlockClick = (index: number) => {
     inputRef.current?.focus();
+    setTimeout(() => {
+      inputRef.current?.setSelectionRange(index, index);
+      setCursorPosition(index);
+    }, 0);
   };
 
   return (
@@ -26,9 +37,11 @@ export function Otp() {
           className="otp-input"
           name="otp-input"
           id="otp-input"
-          type="number"
+          type="text"
           value={value}
           onChange={handleChange}
+          onKeyUp={updateCursorPosition}
+          onClick={updateCursorPosition}
           maxLength={EXAMPLE_OTP.length}
           autoComplete="off"
           autoFocus
@@ -37,9 +50,11 @@ export function Otp() {
           {EXAMPLE_OTP.split("").map((_, index) => (
             <li
               key={index}
-              onClick={() => handleBlockClick()}
-              className={`otp-block ${index === value.length ? "active" : ""} ${
-                value[index] ? "filled" : ""
+              onClick={() => handleBlockClick(index)}
+              className={`otp-block ${
+                index === cursorPosition && !value[index] ? "active" : ""
+              } ${value[index] ? "filled" : ""} ${
+                index === cursorPosition ? "cursor-here" : ""
               }`}
             >
               <span className="otp-char">{value[index] || ""}</span>

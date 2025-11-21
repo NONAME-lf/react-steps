@@ -76,7 +76,8 @@
                 }
             }
 
-            &:focus-within {
+            &:focus-within,
+            &.cursor-here {
                 border-color: #13d377;
                 box-shadow: 0 0 0 3px rgba(19, 211, 119, 0.2);
             }
