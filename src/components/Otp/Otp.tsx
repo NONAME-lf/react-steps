@@ -7,14 +7,14 @@ export function Otp() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const clearValue = e.target.value
+    const clearedValue = e.target.value
       .toUpperCase()
       .slice(0, EXAMPLE_OTP.length);
 
-    setValue(clearValue);
+    setValue(clearedValue);
   };
 
-  const handleBlockClick = (index: number) => {
+  const handleBlockClick = () => {
     inputRef.current?.focus();
   };
 
@@ -37,7 +37,7 @@ export function Otp() {
           {EXAMPLE_OTP.split("").map((_, index) => (
             <li
               key={index}
-              onClick={() => handleBlockClick(index)}
+              onClick={() => handleBlockClick()}
               className={`otp-block ${index === value.length ? "active" : ""} ${
                 value[index] ? "filled" : ""
               }`}
